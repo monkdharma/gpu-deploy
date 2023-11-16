@@ -1,0 +1,17 @@
+- name: set hostname
+  shell: hostnamectl set-hostname {{ hostname }} && hostname {{ hostname }}
+- name: install gcc make
+  shell: apt update -y && apt install -y gcc make
+
+- name: Add blacklist nouveau 
+  copy:
+    content: |
+      blacklist nouveau
+      options nouveau modeset=0
+    dest: /etc/modprobe.d/nvidia.conf
+  notify:
+    - reboot node
+
+- name: install nvidia drivers 525 
+  shell: apt install -y  nvidia-driver-525
+

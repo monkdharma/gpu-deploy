@@ -1,0 +1,27 @@
+{
+    "data-root": "/var/lib/docker",
+    "exec-opts": [
+        "native.cgroupdriver=systemd"
+    ],
+    "insecure-registries": [
+        "sealos.hub:5000"
+    ],
+    "log-driver": "json-file",
+    "log-level": "warn",
+    "log-opts": {
+        "max-file": "3",
+        "max-size": "10m"
+    },
+   "storage-driver": "overlay2",
+   "storage-opts": [
+       "overlay2.size=40G"
+   ],
+    "max-concurrent-downloads": 20,
+    "default-runtime": "nvidia",
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "nvidia-container-runtime"
+        }
+    }
+}
