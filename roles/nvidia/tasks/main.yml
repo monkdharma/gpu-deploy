@@ -9,9 +9,11 @@
       blacklist nouveau
       options nouveau modeset=0
     dest: /etc/modprobe.d/nvidia.conf
-  notify:
-    - reboot node
 
 - name: install nvidia drivers 525 
   shell: apt install -y  nvidia-driver-525
 
+- name: Disable Unattended Upgrades
+  shell: echo 'APT::Periodic::Update-Package-Lists "0";\nAPT::Periodic::Unattended-Upgrade "0";\n' | tee /etc/apt/apt.conf.d/20auto-upgrades && apt -y remove unattended-upgrades && systemctl stop unattended-upgrades.service && systemctl mask unattended-upgrades.service
+  notify: 
+    - reboot node
