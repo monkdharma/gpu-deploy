@@ -14,7 +14,7 @@
     },
    "storage-driver": "overlay2",
    "storage-opts": [
-       "overlay2.size=40G"
+       "overlay2.size=50G"
    ],
     "max-concurrent-downloads": 20,
     "default-runtime": "nvidia",

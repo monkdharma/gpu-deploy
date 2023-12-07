@@ -23,6 +23,10 @@
   shell: nvidia-ctk runtime configure --runtime=docker
 
 - name: Modify daemon.json
+  tags: 
+  - instconf
+  notify:
+  - restart docker
   template:
     src: daemon.json
     dest: "/etc/docker/daemon.json"
