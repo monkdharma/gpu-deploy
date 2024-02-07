@@ -34,11 +34,3 @@
     owner: root
     group: root
 
-- name: copy grub 
-  copy:
-    src: grub 
-    dest: /etc/default/grub
-    mode: 0644
-
-- name: reboot node
-  shell: update-grub && reboot
